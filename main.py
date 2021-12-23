@@ -199,7 +199,7 @@ def raw_to_jpg(compression_path):
             if not os.path.exists(memories_subdirectory):
                 os.mkdir(memories_subdirectory)
 
-            new_subdirectory = os.path.join(memories_subdirectory, f"{dt_info[0]}-{dt_info[1]}-{dt_info[2]}")
+            new_subdirectory = os.path.join(memories_subdirectory, f"{dt_info[0]}-{dt_info[1]}")
             if not os.path.exists(new_subdirectory):
                 os.mkdir(new_subdirectory)
 
