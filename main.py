@@ -144,7 +144,7 @@ def path_selection(image_dirs):
             dir_lookup[dir_index] = directory
             compressor_parent_folder = os.path.split(os.path.split(directory)[0])[-1]
             print(f"\t{dir_index}. {compressor_parent_folder}")
-    print("___________________________________________\n")
+    print("===================================================================\n")
     print("Which directories would you like to select? Press return to cancel.")
     valid_input = False
     while not valid_input:
@@ -177,7 +177,8 @@ def path_selection(image_dirs):
 
 def raw_to_jpg(compression_path):
     files = os.listdir(compression_path)
-    i = 0
+    if len(files) == 0:
+        return
     compression_parent = os.path.split(compression_path)[0]
     print("\n###########################################################")
     print(f"Running converter on {compression_parent}.")
@@ -200,7 +201,6 @@ def raw_to_jpg(compression_path):
             with rawpy.imread(abs_path) as raw:
                 rgb = raw.postprocess(use_camera_wb=True)
             Image.fromarray(rgb).save(f"{os.path.join(new_subdirectory, file[:-4])}.jpg")
-            i += 1
     print(f"Conversion done for {compression_parent}.")
     print("###########################################################\n")
 
