@@ -177,7 +177,7 @@ def path_selection(image_dirs):
 
 def raw_to_jpg(compression_path):
     files = os.listdir(compression_path)
-    total = len(files)
+    total = len([file for file in files if file.endswith('.NEF')])
     i = 1
     if len(files) == 0:
         return
@@ -215,7 +215,7 @@ def raw_to_jpg(compression_path):
         if deleter == 'y':
             valid_input = True
             for file in files:
-                if file.endswith('.NEF'):
+                if file.endswith('.NEF') or file.endswith('.xmp'):
                     abs_path = os.path.join(compression_path, file)
                     print(f" -> Deleting: {file[:-4]}", end='\r')
                     try:
