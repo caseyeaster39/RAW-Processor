@@ -177,6 +177,8 @@ def path_selection(image_dirs):
 
 def raw_to_jpg(compression_path):
     files = os.listdir(compression_path)
+    total = len(files)
+    i = 1
     if len(files) == 0:
         return
     compression_parent = os.path.split(compression_path)[0]
@@ -184,6 +186,9 @@ def raw_to_jpg(compression_path):
     print(f"Running converter on {compression_parent}.")
     for file in files:
         if file.endswith('.NEF'):
+            print(f" -> Converting file {i}/{total}: {file[:-4]}", end='\r')
+            i += 1
+
             abs_path = os.path.join(compression_path, file)
             with open(abs_path, 'rb') as fin:
                 tags = exifread.process_file(fin, details=False, stop_tag='EXIF DateTimeOriginal')
