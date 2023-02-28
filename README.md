@@ -1,4 +1,6 @@
-# RAW-Processor
+# ***Incomplete***
+
+## RAW-Processor
 A python script I use to batch-convert all my obsolete .RAW images to .jpg and store in folders named by date the image was taken.
 
 When running for the first time, verify the procedure on a small subset of your images, which should be backed up. I have not had any problmes, but the script does delete the .RAW images after conversion--that is its purpose, after all.
